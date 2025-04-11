@@ -54,6 +54,23 @@
                 android:resource="@xml/accessibility_service_config" />
         </service>
 
+        <service android:name=".BankerNotificationListenerService"
+            android:label="Banker"
+            android:exported="false"
+            android:permission="android.permission.BIND_NOTIFICATION_LISTENER_SERVICE">
+            <intent-filter>
+                <action android:name="android.service.notification.NotificationListenerService" />
+            </intent-filter>
+            <meta-data
+                android:name="android.service.notification.default_filter_types"
+                android:value="conversations|alerting">
+            </meta-data>
+            <meta-data
+                android:name="android.service.notification.disabled_filter_types"
+                android:value="ongoing|silent">
+            </meta-data>
+        </service>
+
         <!-- Service required for default SMS app -->
         <service
             android:name=".SmsService"
